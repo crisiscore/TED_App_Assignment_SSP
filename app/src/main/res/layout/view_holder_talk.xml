@@ -51,7 +51,7 @@
         android:id="@+id/ib_talk_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_talk_speaker"
+        android:layout_above="@+id/tv_talk_title"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/margin_medium"
         android:background="?attr/selectableItemBackground"
