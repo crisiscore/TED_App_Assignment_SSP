@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_small"
+    android:layout_marginTop="@dimen/margin_small">
+
+    <ImageView
+        android:id="@+id/iv_talk_photo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/elon_musk" />
+
+    <TextView
+        android:id="@+id/tv_talk_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_talk_photo"
+        android:layout_alignStart="@+id/tv_talk_speaker"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_toStartOf="@+id/tv_talk_duration"
+        android:gravity="start"
+        android:text="The future we're building and boring company"
+        android:textColor="@color/icons"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_talk_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_talk_photo"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:text="21:02"
+        android:textColor="@color/icons" />
+
+    <TextView
+        android:id="@+id/tv_talk_speaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_talk_title"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:text="Elon Musk"
+        android:textColor="@color/icons" />
+
+    <ImageButton
+        android:id="@+id/ib_talk_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_talk_speaker"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:background="?attr/selectableItemBackground"
+        android:src="@drawable/ic_more_vert" />
+
+</RelativeLayout>
