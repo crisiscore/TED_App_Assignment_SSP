@@ -21,7 +21,7 @@
         android:layout_marginBottom="@dimen/margin_medium"
         android:layout_toStartOf="@+id/tv_talk_duration"
         android:gravity="start"
-        android:text="The future we're building and boring company"
+        android:text="The future we're building -- and boring company"
         android:textColor="@color/icons"
         android:textSize="@dimen/text_regular_2x"
         android:textStyle="bold" />
@@ -55,6 +55,6 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/margin_medium"
         android:background="?attr/selectableItemBackground"
-        android:src="@drawable/ic_more_vert" />
+        android:src="@drawable/ic_more_vert_20dp" />
 
 </RelativeLayout>
