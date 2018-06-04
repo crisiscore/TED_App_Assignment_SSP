@@ -7,8 +7,8 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -26,10 +26,10 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                app:title=" "
-                app:popupTheme="@style/AppTheme.PopupOverlay"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title=" " />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -37,8 +37,8 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:background="@android:color/white"
         android:layout_height="match_parent"
+        android:background="@android:color/white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
@@ -139,10 +139,10 @@
                 android:id="@+id/tv_talk_shot_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/divider"
                 android:layout_below="@+id/tv_talk_details_description"
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="TED2017, Filmed Apr 2017"
+                android:textColor="@color/divider"
                 android:textStyle="bold|italic" />
 
             <View
@@ -213,6 +213,22 @@
                 android:layout_marginBottom="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_large"
                 android:background="@color/divider" />
+
+            <TextView
+                android:id="@+id/tv_watch_next_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_talk_details_divider2"
+                android:text="Watch Next"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_watch_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_watch_next_label"
+                android:layout_marginTop="@dimen/margin_medium" />
 
         </RelativeLayout>
 

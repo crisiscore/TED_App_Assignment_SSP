@@ -35,4 +35,6 @@
     <!-- Specific ration -->
     <dimen name="talk_details_collapse_height">256dp</dimen>
     <dimen name="speaker_logo_size">60dp</dimen>
+    <dimen name="watch_now_width">120dp</dimen>
+    <dimen name="watch_now_height">80dp</dimen>
 </resources>
