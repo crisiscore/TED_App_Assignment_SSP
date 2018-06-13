@@ -19,18 +19,18 @@ public class TalkDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_talk_details);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         RecyclerView watchNext = findViewById(R.id.rv_watch_next);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext() , LinearLayoutManager.VERTICAL , false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         watchNext.setLayoutManager(linearLayoutManager);
         watchNext.setAdapter(new WatchNextAdapter());
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_details , menu);
+        getMenuInflater().inflate(R.menu.menu_details, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

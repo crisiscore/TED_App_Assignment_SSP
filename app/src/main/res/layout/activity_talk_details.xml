@@ -19,6 +19,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop"
                 android:src="@drawable/elon_musk"
                 app:layout_collapseMode="parallax" />
@@ -35,10 +36,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
+        android:fitsSystemWindows="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
@@ -95,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_talk_details_duration"
                 android:layout_marginEnd="@dimen/margin_medium_2"
+                android:contentDescription="@string/action_settings"
                 android:src="@drawable/ic_playlist_add_black_24dp" />
 
             <ImageView
@@ -104,6 +107,7 @@
                 android:layout_below="@+id/tv_talk_details_duration"
                 android:layout_marginEnd="@dimen/margin_medium_2"
                 android:layout_toEndOf="@+id/iv_details_playlist"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_favorite_border_black_24dp" />
 
             <ImageView
@@ -113,6 +117,7 @@
                 android:layout_below="@+id/tv_talk_details_duration"
                 android:layout_marginEnd="@dimen/margin_medium_2"
                 android:layout_toEndOf="@id/iv_details_favourite"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_file_download_black_24dp" />
 
             <ImageView
@@ -122,6 +127,7 @@
                 android:layout_below="@+id/tv_talk_details_duration"
                 android:layout_marginEnd="@dimen/margin_medium"
                 android:layout_toEndOf="@id/iv_details_download"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_share_black_24dp" />
 
             <TextView
@@ -170,6 +176,7 @@
                 android:layout_below="@+id/tv_talk_about_speaker"
                 android:layout_marginEnd="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium_2"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/elon_musk_circle" />
 
             <TextView
@@ -232,7 +239,7 @@
 
         </RelativeLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_play_talk"

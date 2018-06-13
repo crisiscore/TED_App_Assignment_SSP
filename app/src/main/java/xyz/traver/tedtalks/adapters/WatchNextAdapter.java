@@ -13,7 +13,7 @@ public class WatchNextAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_watch_next , parent , false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_watch_next, parent, false);
         return new WatchNextViewHolder(view);
     }
 

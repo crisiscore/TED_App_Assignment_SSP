@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import xyz.traver.tedtalks.R;
 import xyz.traver.tedtalks.adapters.TalksAdapter;
+import xyz.traver.tedtalks.data.models.TalksModel;
 import xyz.traver.tedtalks.delegates.TalkDelegate;
 
 public class MainActivity extends BaseActivity implements TalkDelegate {
@@ -41,7 +42,7 @@ public class MainActivity extends BaseActivity implements TalkDelegate {
         recyclerView.setLayoutManager(linearLayoutManager);
         TalksAdapter adapter = new TalksAdapter(this);
         recyclerView.setAdapter(adapter);
-
+        TalksModel.getObjInstance().loadTalks();
 
     }
 
@@ -66,7 +67,7 @@ public class MainActivity extends BaseActivity implements TalkDelegate {
 
     @Override
     public void onTapTalk() {
-        Intent intent = new Intent(getApplicationContext() , TalkDetailsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), TalkDetailsActivity.class);
         startActivity(intent);
     }
 
