@@ -3,8 +3,11 @@ package xyz.traver.tedtalks.network;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,6 +22,9 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyz.traver.tedtalks.events.ErrorApiEvent;
+import xyz.traver.tedtalks.events.SuccessGetTalksEvent;
+import xyz.traver.tedtalks.network.responses.GetTalksResponse;
 import xyz.traver.tedtalks.utils.TedTalksConstants;
 
 public class HttpUrlConnectionAgentImpl implements TalksDataAgent {
@@ -86,8 +92,18 @@ public class HttpUrlConnectionAgentImpl implements TalksDataAgent {
             }
 
             @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+                Gson gson = new Gson();
+                GetTalksResponse talksResponse = gson.fromJson(result , GetTalksResponse.class);
+
+                if (talksResponse.isResponseOk()){
+                    SuccessGetTalksEvent event = new SuccessGetTalksEvent(talksResponse.getTalksList());
+                    EventBus.getDefault().post(event);
+                }else {
+                    ErrorApiEvent event = new ErrorApiEvent(talksResponse.getMessage());
+                    EventBus.getDefault().post(event);
+                }
 
             }
         }.execute();

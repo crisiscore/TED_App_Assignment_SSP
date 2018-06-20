@@ -5,6 +5,8 @@ import java.util.List;
 import xyz.traver.tedtalks.data.vos.SegmentVO;
 
 public class PodcastVO {
+
+
     private int podcastId;
     private String podcastTitle;
     private String podcastImageUrl;

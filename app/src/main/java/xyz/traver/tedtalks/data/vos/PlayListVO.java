@@ -4,6 +4,7 @@ import java.util.List;
 
 public class PlayListVO {
 
+
     private int playlistId;
     private String playlistTitle;
     private String playlistImageUrl;

@@ -12,21 +12,37 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import xyz.traver.tedtalks.R;
 import xyz.traver.tedtalks.adapters.TalksAdapter;
 import xyz.traver.tedtalks.data.models.TalksModel;
+import xyz.traver.tedtalks.data.vos.TalkVO;
 import xyz.traver.tedtalks.delegates.TalkDelegate;
+import xyz.traver.tedtalks.events.SuccessGetTalksEvent;
+import xyz.traver.tedtalks.network.responses.GetTalksResponse;
 
 public class MainActivity extends BaseActivity implements TalkDelegate {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+    @BindView(R.id.rv_talks)
+    RecyclerView recyclerView;
+    private TalksAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,12 +51,11 @@ public class MainActivity extends BaseActivity implements TalkDelegate {
             }
         });
 
-        RecyclerView recyclerView = findViewById(R.id.rv_talks);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL,
                 false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        TalksAdapter adapter = new TalksAdapter(this);
+        adapter = new TalksAdapter(this);
         recyclerView.setAdapter(adapter);
         TalksModel.getObjInstance().loadTalks();
 
@@ -66,13 +81,35 @@ public class MainActivity extends BaseActivity implements TalkDelegate {
     }
 
     @Override
-    public void onTapTalk() {
+    protected void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this))
+            EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (EventBus.getDefault().isRegistered(this))
+            EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onTapTalk(TalkVO talkVO) {
         Intent intent = new Intent(getApplicationContext(), TalkDetailsActivity.class);
+        intent.putExtra("talk_id" , talkVO.getTalkId());
         startActivity(intent);
     }
 
     @Override
-    public void onTapMenu() {
+    public void onTapMenu(TalkVO talkVO) {
 
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLoadedTalks(SuccessGetTalksEvent event) {
+        adapter.setTalksData(event.getTalks());
+    }
+
+
 }
