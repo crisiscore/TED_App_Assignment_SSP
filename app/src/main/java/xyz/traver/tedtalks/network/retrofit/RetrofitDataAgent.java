@@ -26,6 +26,7 @@ public class RetrofitDataAgent implements TalksDataAgent {
     private TalksApi mApi;
 
     private RetrofitDataAgent() {
+
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .writeTimeout(15, TimeUnit.SECONDS)
@@ -71,7 +72,8 @@ public class RetrofitDataAgent implements TalksDataAgent {
 
             @Override
             public void onFailure(@NonNull Call<GetTalksResponse> call, @NonNull Throwable t) {
-
+                ErrorApiEvent event = new ErrorApiEvent(t.getMessage());
+                EventBus.getDefault().post(event);
             }
         });
 

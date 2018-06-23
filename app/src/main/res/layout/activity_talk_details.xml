@@ -177,6 +177,7 @@
                 android:layout_below="@+id/tv_talk_about_speaker"
                 android:layout_marginEnd="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium_2"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/elon_musk_circle" />
 

@@ -25,9 +25,9 @@ public class TalksModel {
 
     private TalksModel() {
 
-       // talksDataAgent = HttpUrlConnectionAgentImpl.getUrlConnectionAgent();
+        // talksDataAgent = HttpUrlConnectionAgentImpl.getUrlConnectionAgent();
 
-      //  talksDataAgent = OkHttpConnectionAgentImpl.getObjInstance();
+       //  talksDataAgent = OkHttpConnectionAgentImpl.getObjInstance();
 
         talksDataAgent = RetrofitDataAgent.getObjInstance();
 

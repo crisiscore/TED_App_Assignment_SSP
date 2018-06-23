@@ -34,6 +34,7 @@ public class MainActivity extends BaseActivity implements TalkDelegate {
     FloatingActionButton fab;
     @BindView(R.id.rv_talks)
     RecyclerView recyclerView;
+
     private TalksAdapter adapter;
 
     @Override
@@ -51,12 +52,12 @@ public class MainActivity extends BaseActivity implements TalkDelegate {
             }
         });
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),
-                LinearLayoutManager.VERTICAL,
-                false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new TalksAdapter(this);
         recyclerView.setAdapter(adapter);
+
         TalksModel.getObjInstance().loadTalks();
 
     }

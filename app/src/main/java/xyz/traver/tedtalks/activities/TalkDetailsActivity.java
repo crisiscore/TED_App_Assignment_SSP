@@ -57,21 +57,27 @@ public class TalkDetailsActivity extends BaseActivity {
         watchNextRV.setAdapter(new WatchNextAdapter());
 
         int talkId = getIntent().getIntExtra("talk_id", -1);
+
         TalkVO talkVO = TalksModel.getObjInstance().getTalkById(String.valueOf(talkId));
         setupProfile(talkVO);
     }
 
     private void setupProfile(TalkVO talkVO) {
-        Glide.with(getApplicationContext()).load(talkVO.getTalkImageUrl()).into(ivTalkDetailsImage);
+
+        Glide.with(getApplicationContext())
+                .load(talkVO.getTalkImageUrl())
+                .into(ivTalkDetailsImage);
+
         tvTalkDetailsName.setText(talkVO.getSpeaker().getSpeakerName());
         tvTalkDetailsTitle.setText(talkVO.getTalkTitle());
         tvTalkDetailsDuration.setText(Helper.getDurationInMin(talkVO.getTalkDurationInSecond()).concat("  |  "));
         tvTalkDetailDescription.setText(talkVO.getTalkDescription());
+
         Glide.with(getApplicationContext())
                 .load(talkVO.getTalkImageUrl())
-                .apply(RequestOptions.centerCropTransform())
                 .apply(RequestOptions.circleCropTransform())
                 .into(ivTalkDetailSpeakerImage);
+
         tvTalkSpeakerName.setText(talkVO.getSpeaker().getSpeakerName());
     }
 
